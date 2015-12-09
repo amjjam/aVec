@@ -67,7 +67,7 @@ aVec &aVec::operator=(aVec &v){
   y=v.y;
   z=v.z;
   
-  return this;
+  return *this;
 }
 
 
@@ -79,7 +79,7 @@ aVec &aVec::operator+=(aVec &v){
   y+=v.y;
   z+=v.z;
 
-  return this;
+  return *this;
 }
 
 
@@ -91,7 +91,7 @@ aVec &aVec::operator-=(aVec &v){
   y-=v.y;
   z-=v.z;
   
-  return this;
+  return *this;
 }
 
 
@@ -103,7 +103,7 @@ aVec &aVec::operator*=(double f){
   y*=f;
   z*=f;
   
-  return this;
+  return *this;
 }
 
 
@@ -115,7 +115,7 @@ aVec &aVec::operator/=(double f){
   y/=f;
   z/=f;
   
-  return this;
+  return *this;
 }
 
 
@@ -124,7 +124,7 @@ aVec &aVec::operator/=(double f){
   around the X-axis.
   ============================================================================*/
 aVec aVec::rotateX(double a){
-  return aVec(x,y*cos(a)-z*sin(a),y*sin(a)+z*cos(a))
+  return aVec(x,y*cos(a)-z*sin(a),y*sin(a)+z*cos(a));
 }
   
 
@@ -158,7 +158,7 @@ aVec unit(aVec &v){
   double length(aVec &v) - returns the length of the vector
   ============================================================================*/
 double length(aVec &v){
-  return sqrt(v.x()*v.x()+v.y()*v.y()+v.z()*v.z());
+  return sqrt(v.X()*v.X()+v.Y()*v.Y()+v.Z()*v.Z());
 }
 
 

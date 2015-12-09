@@ -5,13 +5,15 @@
 #ifndef _AVEC_H_
 #define _AVEC_H_
 
+#include <math.h>
+
 class aVec{
 public:
   aVec(double x=0, double y=0, double z=0);
   ~aVec();
-  double x(){return x;};
-  double y(){return y;};
-  double z(){return z;};
+  double X(){return x;};
+  double Y(){return y;};
+  double Z(){return z;};
   aVec operator+(aVec &v);
   aVec operator-(aVec &v);
   aVec operator*(double f);
