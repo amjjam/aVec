@@ -21,6 +21,9 @@ public:
   aVec &operator-=(aVec &v);
   aVec &operator*=(double f);
   aVec &operator/=(double f);
+  aVec rotateX(double a);
+  aVec rotateY(double a);
+  aVec rotateZ(double a);
 private:
   double x,y,z;
 };

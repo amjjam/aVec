@@ -120,6 +120,33 @@ aVec &aVec::operator/=(double f){
 
 
 /*=============================================================================
+  aVec rotateX(double a) - returns this vector rotated by angle a
+  around the X-axis.
+  ============================================================================*/
+aVec aVec::rotateX(double a){
+  return aVec(x,y*cos(a)-z*sin(a),y*sin(a)+z*cos(a))
+}
+  
+
+/*=============================================================================
+  aVec rotateY(double a) - returns this vector rotated by angle a
+  around the Y-axis
+  ============================================================================*/
+aVec aVec::rotateY(double a){
+  return aVec(z*sin(a)+x*cos(a),y,z*cos(a)-x*sin(a));
+}
+
+
+/*=============================================================================
+  aVec rotateZ(double a) - return this vector rotated by angle a
+  around the Z-axis.
+  ============================================================================*/
+aVec aVec::rotateZ(double a){
+  return aVec(x*cos(a)-y*sin(a),x*sin(a)+y*cos(a),z);
+}
+
+
+/*=============================================================================
   aVec unit(aVec &v) - returns a unit vector parallel to v
   ============================================================================*/
 aVec unit(aVec &v){
@@ -133,3 +160,5 @@ aVec unit(aVec &v){
 double length(aVec &v){
   return sqrt(v.x()*v.x()+v.y()*v.y()+v.z()*v.z());
 }
+
+
