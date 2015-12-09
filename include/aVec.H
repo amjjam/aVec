@@ -14,6 +14,9 @@ public:
   double X(){return x;};
   double Y(){return y;};
   double Z(){return z;};
+  void setX(double x);
+  void setY(double y);
+  void setZ(double z);
   aVec operator+(aVec &v);
   aVec operator-(aVec &v);
   aVec operator*(double f);
