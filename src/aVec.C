@@ -31,7 +31,7 @@ void aVec::setZ(double z){
 /*=============================================================================
   aVec operator+(aVec &v) - return sum of this vector and vector v
   ============================================================================*/
-aVec aVec::operator+(aVec &v){
+aVec aVec::operator+(const aVec &v){
   aVec r;
   r.x=x+v.x;
   r.y=y+v.y;
@@ -44,7 +44,7 @@ aVec aVec::operator+(aVec &v){
 /*=============================================================================
   aVec operator-(aVec &v) - return this vector minus vector v
   ============================================================================*/
-aVec aVec::operator-(aVec &v){
+aVec aVec::operator-(const aVec &v){
   aVec r;
 
   r.x=x-v.x;
@@ -86,7 +86,7 @@ aVec aVec::operator/(double f){
 /*=============================================================================
   aVec &operator=(aVec &v) - set this vector equal to vector v
   ============================================================================*/
-aVec &aVec::operator=(aVec &v){
+aVec &aVec::operator=(const aVec &v){
   x=v.x;
   y=v.y;
   z=v.z;
@@ -98,7 +98,7 @@ aVec &aVec::operator=(aVec &v){
 /*=============================================================================
   aVec &operator+=(aVec &v) - add vector v to this vector
   ============================================================================*/
-aVec &aVec::operator+=(aVec &v){
+aVec &aVec::operator+=(const aVec &v){
   x+=v.x;
   y+=v.y;
   z+=v.z;
@@ -110,7 +110,7 @@ aVec &aVec::operator+=(aVec &v){
 /*=============================================================================
   aVec &operator-=(aVec &v) - subtract v from this vector
   ============================================================================*/
-aVec &aVec::operator-=(aVec &v){
+aVec &aVec::operator-=(const aVec &v){
   x-=v.x;
   y-=v.y;
   z-=v.z;

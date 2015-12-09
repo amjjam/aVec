@@ -17,13 +17,13 @@ public:
   void setX(double x);
   void setY(double y);
   void setZ(double z);
-  aVec operator+(aVec &v);
-  aVec operator-(aVec &v);
+  aVec operator+(const aVec &v);
+  aVec operator-(const aVec &v);
   aVec operator*(double f);
   aVec operator/(double f);
-  aVec &operator=(aVec &v);
-  aVec &operator+=(aVec &v);
-  aVec &operator-=(aVec &v);
+  aVec &operator=(const aVec &v);
+  aVec &operator+=(const aVec &v);
+  aVec &operator-=(const aVec &v);
   aVec &operator*=(double f);
   aVec &operator/=(double f);
   aVec rotateX(double a);
