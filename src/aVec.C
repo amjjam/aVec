@@ -190,7 +190,7 @@ aVec aVec::rotateZ(double a){
 /*=============================================================================
   aVec unit(aVec &v) - returns a unit vector parallel to v
   ============================================================================*/
-aVec unit(aVec &v){
+aVec unit(const aVec &v){
   return v/length(v);
 }
 	 
@@ -198,7 +198,7 @@ aVec unit(aVec &v){
 /*=============================================================================
   double length(aVec &v) - returns the length of the vector
   ============================================================================*/
-double length(aVec &v){
+double length(const aVec &v){
   return sqrt(v.X()*v.X()+v.Y()*v.Y()+v.Z()*v.Z());
 }
 
