@@ -21,7 +21,7 @@ public:
   aVec operator-(const aVec &v) const;
   aVec operator*(double f) const;
   aVec operator/(double f) const;
-  aVec &operator=(const aVec &v) const;
+  aVec &operator=(const aVec &v);
   aVec &operator+=(const aVec &v);
   aVec &operator-=(const aVec &v);
   aVec &operator*=(double f);

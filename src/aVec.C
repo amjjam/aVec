@@ -48,7 +48,7 @@ void aVec::setZ(double z){
 /*=============================================================================
   aVec operator+(aVec &v) - return sum of this vector and vector v
   ============================================================================*/
-aVec aVec::operator+(const aVec &v){
+aVec aVec::operator+(const aVec &v) const{
   aVec r;
   r.x=x+v.x;
   r.y=y+v.y;
@@ -61,7 +61,7 @@ aVec aVec::operator+(const aVec &v){
 /*=============================================================================
   aVec operator-(aVec &v) - return this vector minus vector v
   ============================================================================*/
-aVec aVec::operator-(const aVec &v){
+aVec aVec::operator-(const aVec &v) const{
   aVec r;
 
   r.x=x-v.x;
@@ -75,7 +75,7 @@ aVec aVec::operator-(const aVec &v){
 /*=============================================================================
   aVec operator*(double f) - return this vector multiplied by constant f
   ============================================================================*/
-aVec aVec::operator*(double f){
+aVec aVec::operator*(double f) const{
   aVec r;
 
   r.x=x*f;
@@ -89,7 +89,7 @@ aVec aVec::operator*(double f){
 /*=============================================================================
   aVec operator/(double f) - return this vector divided by constant f
   ============================================================================*/
-aVec aVec::operator/(double f){
+aVec aVec::operator/(double f) const{
   aVec r;
 
   r.x=x/f;
@@ -164,7 +164,7 @@ aVec &aVec::operator/=(double f){
   aVec rotateX(double a) - returns this vector rotated by angle a
   around the X-axis.
   ============================================================================*/
-aVec aVec::rotateX(double a){
+aVec aVec::rotateX(double a) const{
   return aVec(x,y*cos(a)-z*sin(a),y*sin(a)+z*cos(a));
 }
   
@@ -173,7 +173,7 @@ aVec aVec::rotateX(double a){
   aVec rotateY(double a) - returns this vector rotated by angle a
   around the Y-axis
   ============================================================================*/
-aVec aVec::rotateY(double a){
+aVec aVec::rotateY(double a) const{
   return aVec(z*sin(a)+x*cos(a),y,z*cos(a)-x*sin(a));
 }
 
@@ -182,7 +182,7 @@ aVec aVec::rotateY(double a){
   aVec rotateZ(double a) - return this vector rotated by angle a
   around the Z-axis.
   ============================================================================*/
-aVec aVec::rotateZ(double a){
+aVec aVec::rotateZ(double a) const{
   return aVec(x*cos(a)-y*sin(a),x*sin(a)+y*cos(a),z);
 }
 
