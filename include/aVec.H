@@ -33,7 +33,7 @@ private:
   double x,y,z;
 };
 
-aVec unit(aVec &v);
-double length(aVec &v);
+aVec unit(const aVec &v);
+double length(const aVec &v);
 
 #endif
