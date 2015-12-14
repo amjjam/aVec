@@ -203,3 +203,10 @@ double length(const aVec &v){
 }
 
 
+/*=============================================================================
+  std::ostream &operator<<(std::ostream &os, aVec a) - prints a vector
+  ============================================================================*/
+std::ostream &operator<<(std::ostream &os, aVec a){
+  os << "(" << a.X() << "," << a.Y() << "," << a.Z() << ")";
+  return os;
+}

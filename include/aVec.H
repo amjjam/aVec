@@ -6,6 +6,7 @@
 #define _AVEC_H_
 
 #include <math.h>
+#include <iostream>
 
 class aVec{
 public:
@@ -35,5 +36,6 @@ private:
 
 aVec unit(const aVec &v);
 double length(const aVec &v);
+std::ostream &operator<<(std::ostream &os, aVec a);
 
 #endif
