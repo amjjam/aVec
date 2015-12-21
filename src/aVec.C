@@ -73,6 +73,14 @@ aVec aVec::operator-(const aVec &v) const{
 
 
 /*=============================================================================
+  double operator*(aVec &b) - return the dot product of this vector with b
+  ============================================================================*/
+double aVec::operator*(const aVec &b) const{
+  return x*b.x+y*b.y+z*b.z;
+}
+
+
+/*=============================================================================
   aVec operator*(double f) - return this vector multiplied by constant f
   ============================================================================*/
 aVec aVec::operator*(double f) const{

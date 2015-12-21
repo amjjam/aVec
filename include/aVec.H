@@ -20,6 +20,7 @@ public:
   void setZ(double z);
   aVec operator+(const aVec &v) const;
   aVec operator-(const aVec &v) const;
+  double operator*(const aVec &b) const;
   aVec operator*(double f) const;
   aVec operator/(double f) const;
   aVec &operator=(const aVec &v);
