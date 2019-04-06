@@ -221,7 +221,7 @@ void aVecMatrix::set(int row, int col, double v){
 /*=============================================================================
   int get(int row, int col) - get the value of a matrix element
   ============================================================================*/
-double aVecMatrix::get(int row, int col){
+double aVecMatrix::get(int row, int col) const{
   return m[rcToIndex(row,col)];
 }
 
@@ -230,7 +230,7 @@ double aVecMatrix::get(int row, int col){
   aVecMatrix opeator*(aVecMatrix &m) - multipley this matrix with
   matrix m, this matrix is first, m is second
   ============================================================================*/
-aVecMatrix aVecMatrix::operator*(aVecMatrix &m){
+aVecMatrix aVecMatrix::operator*(const aVecMatrix &m) const{
   aVecMatrix result;
   int row,col,i;
   double sum;
@@ -249,7 +249,7 @@ aVecMatrix aVecMatrix::operator*(aVecMatrix &m){
   aVec operator*(aVec &v) - multipley this matrix with a a vector v,
   this matrix is first, v is second.
   ============================================================================*/
-aVec aVecMatrix::operator*(aVec &v){
+aVec aVecMatrix::operator*(const aVec &v) const{
   aVec result;
   result.x=get(0,0)*v.x+get(0,1)*v.y+get(0,2)*v.z;
   result.y=get(1,0)*v.x+get(1,1)*v.y+get(1,2)*v.z;
@@ -263,7 +263,7 @@ aVec aVecMatrix::operator*(aVec &v){
   int rcToIndex(int row, int col) - convert row and colum to linear
   array index
   ============================================================================*/
-int aVecMatrix::rcToIndex(int row, int col){
+int aVecMatrix::rcToIndex(int row, int col) const{
   return 3*row+col;
 }
 
