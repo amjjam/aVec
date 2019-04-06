@@ -211,6 +211,14 @@ aVecMatrix::aVecMatrix(int axis, double angle){
 
 
 /*=============================================================================
+  ~aVecMatrix() - destructor
+  ============================================================================*/
+aVecMatrix::~aVecMatrix(){
+
+}
+
+
+/*=============================================================================
   void set(int row, int col, double v) - set the value of a matrix element
   ============================================================================*/
 void aVecMatrix::set(int row, int col, double v){
