@@ -196,6 +196,79 @@ aVec aVec::rotateZ(double a) const{
 
 
 /*=============================================================================
+  aVecMatrix(int axis, double angle) - create a matrix with a rotation
+  of angle (in radians) around axis (0 for x, 1 for y, 2 for z)
+  ============================================================================*/
+aVecMatrix::aVecMatrix(int axis, double angle){
+  double ca=cos(angle),sa=sin(angle);
+  int axis1=(axis+1)%3,axis2=(axis+2)%3;
+  set(axis,axis,1);
+  set(axis1,axis1,ca);
+  set(axis1,axis2,-sa);
+  set(axis2,axis1,sa);
+  set(axis2,axis2,ca);
+}
+
+
+/*=============================================================================
+  void set(int row, int col, double v) - set the value of a matrix element
+  ============================================================================*/
+void aVecMatrix::set(int row, int col, double v){
+  m[rcToIndex(row,col)]=v;
+}
+
+
+/*=============================================================================
+  int get(int row, int col) - get the value of a matrix element
+  ============================================================================*/
+double aVecMatrix::get(int row, int col){
+  return m[rcToIndex(row,col)];
+}
+
+
+/*=============================================================================
+  aVecMatrix opeator*(aVecMatrix &m) - multipley this matrix with
+  matrix m, this matrix is first, m is second
+  ============================================================================*/
+aVecMatrix aVecMatrix::operator*(aVecMatrix &m){
+  aVecMatrix result;
+  int row,col,i;
+  double sum;
+  for(row=0;row<3;row++)
+    for(col=0;col<3;col++){
+      sum=0;
+      for(i=0;i<3;i++)
+	sum+=(*this).get(row,i)*m.get(i,col);
+      result.set(row,col,sum);
+    }
+  return result;
+}
+
+
+/*=============================================================================
+  aVec operator*(aVec &v) - multipley this matrix with a a vector v,
+  this matrix is first, v is second.
+  ============================================================================*/
+aVec aVecMatrix::operator*(aVec &v){
+  aVec result;
+  result.x=get(0,0)*v.x+get(0,1)*v.y+get(0,2)*v.z;
+  result.y=get(1,0)*v.x+get(1,1)*v.y+get(1,2)*v.z;
+  result.z=get(2,0)*v.x+get(2,1)*v.y+get(2,2)*v.z;
+
+  return result;
+}
+
+
+/*=============================================================================
+  int rcToIndex(int row, int col) - convert row and colum to linear
+  array index
+  ============================================================================*/
+int aVecMatrix::rcToIndex(int row, int col){
+  return 3*row+col;
+}
+
+
+/*=============================================================================
   aVec unit(aVec &v) - returns a unit vector parallel to v
   ============================================================================*/
 aVec unit(const aVec &v){

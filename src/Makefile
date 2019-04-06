@@ -1,6 +1,6 @@
 libdir=$(prefix)/lib
 
-CPPFLAGS=-Wall -g -fPIC
+CPPFLAGS=-Wall -g -fPIC -std=c++11
 CPP=g++
 
 AVEC_SRC=aVec.C

@@ -7,6 +7,9 @@
 
 #include <math.h>
 #include <iostream>
+#include <array>
+
+class aVecMatrix;
 
 class aVec{
 public:
@@ -33,8 +36,25 @@ public:
   aVec rotateZ(double a) const;
 private:
   double x,y,z;
+  friend aVecMatrix;
 };
 
+
+class aVecMatrix{
+public:
+  aVecMatrix(){};
+  aVecMatrix(int axis, double angle);
+  ~aVecMatrix();
+  void set(int row, int col, double v);
+  double get(int row, int col);
+  aVecMatrix operator*(aVecMatrix &m);
+  aVec operator*(aVec &v);
+private:
+  std::array<double,9> m{};
+  int rcToIndex(int row, int col);
+};
+
+    
 aVec unit(const aVec &v);
 double length(const aVec &v);
 std::ostream &operator<<(std::ostream &os, aVec a);
