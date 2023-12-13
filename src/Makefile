@@ -1,5 +1,3 @@
-libdir=$(prefix)/lib
-
 CPPFLAGS=-Wall -g -fPIC -std=c++11
 CPP=g++
 
@@ -14,13 +12,16 @@ libaVec.a: $(AVEC_OBJ)
 libaVec.so: $(AVEC_OBJ)
 	$(CPP) -shared -Wl,-soname,$@ -o $@ $^
 
-install: $(libdir)/libaVec.a $(libdir)/libaVec.so
-
-$(libdir)/libaVec.a $(libdir)/libaVec.so: libaVec.a libaVec.so
-	cp libaVec.a libaVec.so $(libdir)
+install:
+	mkdir -p /opt/amj/lib
+	mkdir -p /opt/amj/include
+	cp libaVec.a /opt/amj/lib
+	cp libaVec.so /opt/amj/lib
+	cp ../include/aVec.H /opt/amj/include
 
 uninstall:
-	- rm -f $(libdir)/libaVec.a $(libdir)/libaVec.so
+	- rm -f /opt/amj/lib/libaVec.a /opt/amj/lib/libaVec.so \
+	/opt/amj/include/aVec.H
 
 clean:
 	- rm -f libaVec.a libaVec.so $(AVEC_OBJ)
