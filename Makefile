@@ -1,5 +1,5 @@
 ifndef prefix
-	prefix=~
+	prefix=/opt/amj/
 endif
 export prefix
 
