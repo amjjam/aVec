@@ -194,6 +194,22 @@ aVec aVec::rotateZ(double a) const{
   return aVec(x*cos(a)-y*sin(a),x*sin(a)+y*cos(a),z);
 }
 
+#include <cstring>
+/* write to memory */
+size_t aVec::write(uint8_t *d) const{
+  memcpy(d,&x,sizeof(double));
+  memcpy(d+sizeof(double),&y,sizeof(double));
+  memcpy(d+2*sizeof(double),&z,sizeof(double));
+  return 3*sizeof(double);
+}
+
+/* read from memory */
+size_t aVec::read(const uint8_t *d){
+  memcpy(&x,d,sizeof(double));
+  memcpy(&y,d+sizeof(double),sizeof(double));
+  memcpy(&z,d+2*sizeof(double),sizeof(double));
+  return 3*sizeof(double);
+}
 
 /*=============================================================================
   aVecMatrix(int axis, double angle) - create a matrix with a rotation
@@ -280,6 +296,9 @@ int aVecMatrix::rcToIndex(int row, int col) const{
   aVec unit(aVec &v) - returns a unit vector parallel to v
   ============================================================================*/
 aVec unit(const aVec &v){
+  double l=length(v);
+  if(l==0)
+    return v;
   return v/length(v);
 }
 	 
@@ -298,4 +317,34 @@ double length(const aVec &v){
 std::ostream &operator<<(std::ostream &os, aVec a){
   os << "(" << a.X() << "," << a.Y() << "," << a.Z() << ")";
   return os;
+}
+
+
+/*=============================================================================
+  int fwrite(FILE *fp, const aVec &) - write a vector to a file
+  ============================================================================*/
+int fwrite(FILE *fp, const aVec &v){
+  double tmp;
+  tmp=v.X();
+  fwrite(&tmp,sizeof(double),1,fp);
+  tmp=v.Y();
+  fwrite(&tmp,sizeof(double),1,fp);
+  tmp=v.Z();
+  fwrite(&tmp,sizeof(double),1,fp);
+  return 3*sizeof(double);
+}
+
+
+/*=============================================================================
+  int fread(FILE *fp, aVec &) - read a vector from a file
+  ============================================================================*/
+int fread(FILE *fp, aVec &v){
+  double tmp;
+  fread(&tmp,sizeof(double),1,fp);
+  v.setX(tmp);
+  fread(&tmp,sizeof(double),1,fp);
+  v.setY(tmp);
+  fread(&tmp,sizeof(double),1,fp);
+  v.setZ(tmp);
+  return 3*sizeof(double);
 }

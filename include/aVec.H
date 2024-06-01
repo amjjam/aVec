@@ -34,6 +34,9 @@ public:
   aVec rotateX(double a) const;
   aVec rotateY(double a) const;
   aVec rotateZ(double a) const;
+  size_t size() const {return 3*sizeof(double);};
+  size_t write(uint8_t *d) const;
+  size_t read(const uint8_t *d);
 private:
   double x,y,z;
   friend aVecMatrix;
@@ -58,5 +61,8 @@ private:
 aVec unit(const aVec &v);
 double length(const aVec &v);
 std::ostream &operator<<(std::ostream &os, aVec a);
+
+int fwrite(FILE *fp, const aVec &);
+int fread(FILE *fp, aVec &);
 
 #endif
